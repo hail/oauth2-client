@@ -32,13 +32,17 @@ class User
 
     public function __set($property, $value)
     {
-        if (!property_exists($this, $property)) {
+        /*if (!property_exists($this, $property)) {
             throw new \OutOfRangeException(sprintf(
                 '%s does not contain a property by the name of "%s"',
                 __CLASS__,
                 $property
             ));
-        }
+        }*/
+        
+        // Need to remove this check because we want to pass provider-specific
+        // data back in the entity, i.e. role, but can't because this was
+        // introduced
 
         $this->$property = $value;
 
